@@ -1,0 +1,25 @@
+{
+  "name": "homelab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "email.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/godofgeeks23/homelab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/godofgeeks23/homelab/issues"
+  },
+  "homepage": "https://github.com/godofgeeks23/homelab#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "nodemailer": "^7.0.3"
+  }
+}
