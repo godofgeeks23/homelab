@@ -1,25 +1,15 @@
 const nodemailer = require("nodemailer");
-const dotenv = require("dotenv").config("./.env");
-
-const emailConfig = {
-  HOST: process.env.SMTP_HOST,
-  PORT: process.env.SMTP_PORT,
-  SECURE: process.env.SMTP_SECURE,
-  FROM: process.env.SMTP_FROM,
-  AUTH: {
-    USER: process.env.SMTP_USER,
-    PASS: process.env.SMTP_PASS,
-  },
-};
+const dotenv = require("dotenv");
+dotenv.config("./.env");
 
 // Create a transporter using SMTP
 const transporter = nodemailer.createTransport({
-  host: emailConfig.HOST,
-  port: emailConfig.PORT,
-  secure: emailConfig.SECURE === "true",
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
+  secure: process.env.SMTP_SECURE === "true",
   auth: {
-    user: emailConfig.AUTH.USER,
-    pass: emailConfig.AUTH.PASS,
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
   },
 });
 
@@ -27,7 +17,7 @@ const transporter = nodemailer.createTransport({
 const sendEmail = async (to) => {
   try {
     const mailOptions = {
-      from: emailConfig.FROM,
+      from: process.env.SMTP_FROM,
       to,
       subject: "Notification Test",
       html: "This is a test email",
