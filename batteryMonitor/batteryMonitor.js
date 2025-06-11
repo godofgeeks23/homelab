@@ -95,18 +95,18 @@ const monitorBattery = () => {
         `<p>Battery is at <strong>${percentage}%</strong>. Plug in immediately to avoid shutdown!</p>`
       );
       notifiedLevels.add("5");
-    } else if (percentage <= 60 && !notifiedLevels.has("60")) {
+    } else if (percentage <= 10 && !notifiedLevels.has("10")) {
       sendAlert(
         `🟠 Homelab: Battery Very Low (${percentage}%)`,
         `<p>Battery is at <strong>${percentage}%</strong>. Please plug in soon.</p>`
       );
-      notifiedLevels.add("60");
-    } else if (percentage <= 70 && !notifiedLevels.has("70")) {
+      notifiedLevels.add("10");
+    } else if (percentage <= 20 && !notifiedLevels.has("20")) {
       sendAlert(
         `🟡 Homelab: Battery Low (${percentage}%)`,
         `<p>Battery is at <strong>${percentage}%</strong>. Consider plugging in.</p>`
       );
-      notifiedLevels.add("70");
+      notifiedLevels.add("20");
     }
   } else {
     // Clear notified levels when no longer discharging
