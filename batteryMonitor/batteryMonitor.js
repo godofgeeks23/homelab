@@ -118,7 +118,7 @@ const monitorBattery = () => {
 };
 
 // Run every 5 minutes
-setInterval(monitorBattery, 1000);
+setInterval(monitorBattery, 60 * 1000);
 
 // Run once at startup
 monitorBattery();
