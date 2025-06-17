@@ -1,38 +1,8 @@
-const nodemailer = require("nodemailer");
-const dotenv = require("dotenv");
 const { execSync } = require("child_process");
-dotenv.config({ path: "./.env" });
+const sendEmail = require("./emailClient");
+const sendNotification = require("./gotifyClient");
 
-// Email transporter
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: process.env.SMTP_PORT,
-  secure: process.env.SMTP_SECURE === "true",
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
-
-const sendEmail = async (to, subject, html) => {
-  try {
-    const mailOptions = {
-      from: process.env.SMTP_FROM,
-      to,
-      subject,
-      html,
-    };
-
-    console.log("Sending email to:", to);
-
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent:", info.messageId);
-    return true;
-  } catch (error) {
-    console.error("Error sending email:", error);
-    return false;
-  }
-};
+const NOTIFICATION_MODULES = ["gotify"];
 
 // Get battery info and parse it
 const getBatteryInfo = () => {
@@ -49,8 +19,7 @@ const getBatteryInfo = () => {
     return { state, percentage };
   } catch (error) {
     console.error("Failed to get battery info:", error);
-    sendEmail(
-      process.env.ALERT_EMAIL,
+    sendAlert(
       "❌ Homelab: Battery Error",
       `<p>Failed to get battery info: ${error}</p>`
     );
@@ -68,14 +37,20 @@ const monitorBattery = () => {
   console.log(`Battery State: ${state}, Percentage: ${percentage}%`);
 
   const sendAlert = (subject, html) => {
-    sendEmail(process.env.ALERT_EMAIL, subject, html);
+    NOTIFICATION_MODULES.forEach((module) => {
+      if (module === "email") {
+        sendEmail(process.env.ALERT_EMAIL, subject, html);
+      } else if (module === "gotify") {
+        sendNotification(subject, html);
+      }
+    });
   };
 
   // 1. When it gets plugged in (charging started)
   if (state === "charging" && prevState !== "charging") {
     sendAlert(
       "✅ Homelab: Server Battery Charging",
-      `<p>Your homelab server is plugged in and charging.</p>`
+      `Your homelab server is plugged in and charging.`
     );
   }
 
@@ -83,7 +58,7 @@ const monitorBattery = () => {
   if (state === "fully" && prevState !== "fully") {
     sendAlert(
       "✅ Homelab: Server Battery Fully Charged",
-      `<p>Your homelab server's battery is <strong>fully charged</strong>. You may unplug the power cord.</p>`
+      `Your homelab server's battery is fully charged. You may unplug the power cord`
     );
   }
 
@@ -92,19 +67,19 @@ const monitorBattery = () => {
     if (percentage <= 5 && !notifiedLevels.has("5")) {
       sendAlert(
         `🔴 Homelab: Battery Critically Low (${percentage}%)`,
-        `<p>Battery is at <strong>${percentage}%</strong>. Plug in immediately to avoid shutdown!</p>`
+        `Battery is at ${percentage}% Plug in immediately to avoid shutdown!`
       );
       notifiedLevels.add("5");
     } else if (percentage <= 10 && !notifiedLevels.has("10")) {
       sendAlert(
         `🟠 Homelab: Battery Very Low (${percentage}%)`,
-        `<p>Battery is at <strong>${percentage}%</strong>. Please plug in soon.</p>`
+        `Battery is at ${percentage}% Please plug in soon.`
       );
       notifiedLevels.add("10");
     } else if (percentage <= 20 && !notifiedLevels.has("20")) {
       sendAlert(
         `🟡 Homelab: Battery Low (${percentage}%)`,
-        `<p>Battery is at <strong>${percentage}%</strong>. Consider plugging in.</p>`
+        `Battery is at ${percentage}% Consider plugging in.`
       );
       notifiedLevels.add("20");
     }
@@ -118,7 +93,7 @@ const monitorBattery = () => {
 };
 
 // Run every 5 minutes
-setInterval(monitorBattery, 60 * 1000);
+setInterval(monitorBattery, 20 * 1000);
 
 // Run once at startup
 monitorBattery();

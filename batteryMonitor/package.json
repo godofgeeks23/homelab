@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/godofgeeks23/homelab#readme",
   "dependencies": {
+    "axios": "^1.10.0",
     "dotenv": "^16.5.0",
+    "form-data": "^4.0.3",
     "nodemailer": "^7.0.3"
   }
 }
