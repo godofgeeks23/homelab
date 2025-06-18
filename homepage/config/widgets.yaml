@@ -1,0 +1,31 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/info-widgets/ 
+
+- search:
+    provider: google
+    target: _blank
+
+- resources:
+    label: System
+    cpu: true
+    memory: true
+    cputemp: true
+    tempmin: 0 # optional, minimum cpu temp
+    tempmax: 85 # optional, maximum cpu temp
+    uptime: true
+    units: metric # only used by cpu temp, options: 'imperial' or 'metric'
+    refresh: 200 # optional, in ms
+    network: true # optional, uses 'default' if true or specify a network interface name
+    
+- resources:
+    label: Storage
+    disk: /
+    diskUnits: bytes # optional, bytes (default) or bbytes. Only applies to disk
+
+- openmeteo:
+    label: Current
+    latitude: 28.5534
+    longitude: 77.3373
+    units: metric
+    cache: 5
