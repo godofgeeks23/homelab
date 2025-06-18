@@ -1,0 +1,11 @@
+services:
+  gotify:
+    image: gotify/server
+    user: "1000:1000"
+    ports:
+      - 3030:80
+    environment:
+      GOTIFY_DEFAULTUSER_PASS: "xxx"
+    volumes:
+      - "./gotify_data:/app/data"
+    restart: unless-stopped
