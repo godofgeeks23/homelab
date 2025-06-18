@@ -36,12 +36,12 @@ const monitorBattery = () => {
   const { state, percentage } = info;
   console.log(`Battery State: ${state}, Percentage: ${percentage}%`);
 
-  const sendAlert = (subject, html) => {
+  const sendAlert = (subject, content) => {
     NOTIFICATION_MODULES.forEach((module) => {
       if (module === "email") {
-        sendEmail(process.env.ALERT_EMAIL, subject, html);
+        sendEmail(process.env.ALERT_EMAIL, subject, content);
       } else if (module === "gotify") {
-        sendNotification(subject, html);
+        sendNotification(subject, content);
       }
     });
   };
