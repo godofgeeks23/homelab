@@ -1,0 +1,92 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- General:
+    - Homepage:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/homepage.png
+        href: https://home.avilab.online/
+        description: Homelab's homepage
+
+    - Dashboard:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/dashdot.png
+        href: https://dash.avilab.online/
+        description: dashdot Dashboard
+
+    - FileBrowser:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/filebrowser.svg
+        href: https://files.avilab.online/
+        description: Manage files remotely
+
+    - qBittorrent:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/qbittorrent.svg
+        href: https://torrent.avilab.online/
+        description: qBittorrent Web client
+
+    - Notes:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/joplin.svg
+        href: https://notes.avilab.online/
+        description: Joplin notes app
+
+    - NextCloud:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/nextcloud.svg
+        href: https://cloud.avilab.online/
+        description: Nextcloud - files, notes, mails, calendar, etc
+
+    - PDF tools:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/stirling-pdf.svg
+        href: https://pdf.avilab.online/
+        description: Stirling PDF Tools
+
+- Media:
+    - Music:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/navidrome.svg
+        href: https://music.avilab.online/
+        description: Navidrome cloud music player
+
+    - Movies / TV:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/jellyfin.svg
+        href: https://stream.avilab.online/
+        description: JellyFin Media Server
+
+- Monitoring, Metrics and Logging:
+    - Portainer:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/portainer.svg
+        href: https://portainer.avilab.online/
+        description: Manager everything Docker
+
+    - Speedtest:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/speedtest-tracker.png
+        href: https://speedtest.avilab.online/
+        description: Perform a network speed check
+
+    - PiHole:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/pi-hole.svg
+        href: https://pihole.avilab.online/admin/
+        description: PiHole Network Manager and Ad Blocking
+
+    - Uptime Monitor:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/uptime-kuma.svg
+        href: https://uptime.avilab.online/
+        description: Uptime Kuma
+
+    - Statistics:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/beszel-light.svg
+        href: https://stats.avilab.online/
+        description: Beszel Monitoring
+
+    - Notifications:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/gotify.svg
+        href: https://notification.avilab.online/
+        description: Gotify notifications
+
+- Development / Automation:
+    - CodeServer:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/code.svg
+        href: https://code.avilab.online/
+        description: Remote coding environment
+
+    - n8n:
+        icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/n8n.svg
+        href: https://n8n.avilab.online/
+        description: n8n automation
