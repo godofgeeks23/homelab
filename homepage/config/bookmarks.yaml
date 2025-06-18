@@ -1,0 +1,23 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+- Developer/Professional:
+    - Website/Blog:
+        - icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/google-contacts.svg
+          href: https://mraviral.in
+    - Github:
+        - icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg
+          href: https://github.com/godofgeeks23
+    - LinkedIn:
+        - icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/linkedin.svg
+          href: https://www.linkedin.com/in/aviralsrivastav23/
+
+- Social:
+    - X:
+        - icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/twitter.svg
+          href: https://x.com/godofgeeks_
+    - Instagram:
+        - icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/instagram.svg
+          href: https://www.instagram.com/avi_ii.iii/
+    
