@@ -2,4 +2,4 @@
 
 ## Architecture
 
-<img width="1049" alt="shapes at 25-06-20 13 07 08" src="https://github.com/user-attachments/assets/8ec7da16-5c07-42b7-9679-05aa31f16392" />
+<img width="1125" alt="shapes at 25-06-20 13 24 47" src="https://github.com/user-attachments/assets/e7462504-c0ed-4513-85be-70c913c6cd1b" />
