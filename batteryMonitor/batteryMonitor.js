@@ -89,7 +89,9 @@ const monitorBattery = () => {
   }
 
   // Save previous state
-  prevState = state;
+  if (state != "pending") {
+    prevState = state;
+  }
 };
 
 // Run every 5 minutes
