@@ -2,7 +2,6 @@ const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 dotenv.config({ path: "./.env" });
 
-// Email transporter
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,
