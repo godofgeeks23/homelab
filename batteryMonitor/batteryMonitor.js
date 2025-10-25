@@ -4,10 +4,12 @@ const sendNotification = require("./gotifyClient");
 
 const NOTIFICATION_MODULES = ["gotify"];
 
+const batteryDevice = "/org/freedesktop/UPower/devices/battery_BAT1";
+
 // Get battery info and parse it
 const getBatteryInfo = () => {
   try {
-    const command = `upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep -E "state|percentage"`;
+    const command = `upower -i ${batteryDevice} | grep -E "state|percentage"`;
     const result = execSync(command, { encoding: "utf-8" });
 
     const stateMatch = result.match(/state:\s+(\w+)/);
