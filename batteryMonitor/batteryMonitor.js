@@ -2,7 +2,7 @@ const { execSync } = require("child_process");
 const sendEmail = require("./emailClient");
 const sendNotification = require("./gotifyClient");
 
-const NOTIFICATION_MODULES = ["gotify"];
+const NOTIFICATION_MODULES = ["gotify"]; // can be among values: "email", "gotify"
 
 const batteryDevice = "/org/freedesktop/UPower/devices/battery_BAT1";
 
