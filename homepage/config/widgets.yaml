@@ -1,6 +1,6 @@
 ---
 # For configuration options and examples, please see:
-# https://gethomepage.dev/configs/info-widgets/ 
+# https://gethomepage.dev/configs/info-widgets/
 
 - search:
     provider: google
@@ -17,7 +17,7 @@
     units: metric # only used by cpu temp, options: 'imperial' or 'metric'
     refresh: 200 # optional, in ms
     network: true # optional, uses 'default' if true or specify a network interface name
-    
+
 - resources:
     label: Storage
     disk: /
