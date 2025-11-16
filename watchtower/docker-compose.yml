@@ -1,0 +1,12 @@
+services:
+  watchtower:
+    image: nickfedor/watchtower
+    container_name: watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      WATCHTOWER_NOTIFICATIONS: "gotify"
+      WATCHTOWER_NOTIFICATION_GOTIFY_URL: "https://notification.avilab.online/"
+      WATCHTOWER_NOTIFICATION_GOTIFY_TOKEN: "<GOTIFY-APP-TOKEN-HERE>"
+    command: --interval 300
