@@ -18,3 +18,8 @@ Specs of the machine I am using here are very humble -
 ## Architecture
 
 <img width="1125" alt="shapes at 25-06-20 13 30 00" src="https://github.com/user-attachments/assets/3bd240ba-a3e0-40a7-9103-db6cefaf7bc9" />
+
+---
+
+PS the machine - 
+![IMG_20251028_200129752_HDR-min](https://github.com/user-attachments/assets/c5c5b9eb-590b-4fbf-8f43-a5ed4d5098f3)
