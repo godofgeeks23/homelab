@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: xxx
+      POSTGRES_PASSWORD: xxx
+      POSTGRES_DB: xxx
+    volumes:
+      - ./postgres_data:/var/lib/postgresql
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: unless-stopped
+    ports:
+      - "8082:80"
+    environment:
+      # Credentials to log into the pgAdmin Web UI
+      PGADMIN_DEFAULT_EMAIL: xxx
+      PGADMIN_DEFAULT_PASSWORD: xxx
+    volumes:
+      - ./pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
