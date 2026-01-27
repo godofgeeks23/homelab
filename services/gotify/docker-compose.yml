@@ -5,7 +5,7 @@ services:
     ports:
       - 3030:80
     environment:
-      GOTIFY_DEFAULTUSER_PASS: "xxx"
+      GOTIFY_DEFAULTUSER_PASS: "xxxxxxxxx"
     volumes:
       - "./gotify_data:/app/data"
     restart: unless-stopped
