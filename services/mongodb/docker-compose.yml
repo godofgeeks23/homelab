@@ -1,0 +1,31 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      # These credentials will be used for the root admin account
+      MONGO_INITDB_ROOT_USERNAME: xxx
+      MONGO_INITDB_ROOT_PASSWORD: xxx
+    volumes:
+      # Persists your data in a folder called 'data' in the same directory
+      - ./data:/data/db
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    environment:
+      # Connects the UI to the MongoDB service above
+      ME_CONFIG_MONGODB_ADMINUSERNAME: xxx
+      ME_CONFIG_MONGODB_ADMINPASSWORD: xxx
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      # Optional: Add login for the Web UI itself
+      ME_CONFIG_BASICAUTH_USERNAME: xxx
+      ME_CONFIG_BASICAUTH_PASSWORD: xxx
+    depends_on:
+      - mongodb
