@@ -18,7 +18,7 @@ async function getToken() {
   } catch (error) {
     console.error(
       "Error fetching token:",
-      error.response ? error.response.data : error.message
+      error.response ? error.response.data : error.message,
     );
   }
 }
@@ -36,13 +36,13 @@ async function getProxyHosts() {
         headers: {
           Authorization: `Bearer ${token.token}`,
         },
-      }
+      },
     );
     return response.data;
   } catch (error) {
     console.error(
       "Error fetching proxy hosts:",
-      error.response ? error.response.data : error.message
+      error.response ? error.response.data : error.message,
     );
   }
 }
@@ -85,14 +85,14 @@ async function addProxyHost(domainNames, forwardHost, forwardPort) {
         headers: {
           Authorization: `Bearer ${token.token}`,
         },
-      }
+      },
     );
     console.log("Proxy host added:", response.data.id);
     return response.data;
   } catch (error) {
     console.error(
       "Error adding proxy host:",
-      error.response ? error.response.data : error.message
+      error.response ? error.response.data : error.message,
     );
   }
 }
@@ -118,14 +118,14 @@ async function deleteProxyHost(id) {
         headers: {
           Authorization: `Bearer ${token.token}`,
         },
-      }
+      },
     );
     console.log("Proxy host deleted:", response.data);
     return response.data;
   } catch (error) {
     console.error(
       "Error deleting proxy host:",
-      error.response ? error.response.data : error.message
+      error.response ? error.response.data : error.message,
     );
   }
 }
@@ -155,7 +155,52 @@ async function restoreFromFile(filename = "proxy-hosts.json") {
   }
 }
 
-exportProxyHosts();
-// addProxyHost(["dev.reconaid.in"], "127.0.0.1", 81);
-// deleteProxyHost(26);
-// restoreFromFile();
+// ... keep existing imports ...
+
+// ... keep existing functions ...
+
+async function main() {
+  const args = process.argv.slice(2);
+  const command = args[0];
+
+  switch (command) {
+    case "add":
+      const [domain, forwardHost, forwardPort] = args.slice(1);
+      if (!domain || !forwardHost || !forwardPort) {
+        console.error(
+          "Usage: node index.js add <domain> <forwardHost> <forwardPort>",
+        );
+        process.exit(1);
+      }
+      await addProxyHost([domain], forwardHost, parseInt(forwardPort));
+      break;
+
+    case "delete":
+      const [id] = args.slice(1);
+      if (!id) {
+        console.error("Usage: node index.js delete <id>");
+        process.exit(1);
+      }
+      await deleteProxyHost(id);
+      break;
+
+    case "export":
+      const [filename] = args.slice(1);
+      await exportProxyHosts(filename);
+      break;
+
+    case "restore":
+      const [restoreFile] = args.slice(1);
+      await restoreFromFile(restoreFile);
+      break;
+
+    default:
+      console.log("Usage: node index.js <command> [args]");
+      console.log("Commands: add, delete, export, restore");
+      break;
+  }
+}
+
+if (require.main === module) {
+  main();
+}

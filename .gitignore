@@ -17,3 +17,6 @@ override.tf.json
 terraform.rc
 
 env.json
+.env
+node_modules
+proxy-hosts.json
